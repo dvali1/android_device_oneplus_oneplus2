@@ -58,6 +58,7 @@ done
 PRODUCT_PACKAGES += \\
     CNEService \\
     com.qti.dpmframework \\
+<<<<<<< HEAD
     dpmapi
 
 PRODUCT_PACKAGES += \\
@@ -65,6 +66,8 @@ PRODUCT_PACKAGES += \\
     libtime_genoff \\
     CNEService \\
     com.qti.dpmframework \\
+=======
+>>>>>>> 9140754... oneplus2: Support Fastdormancy
     dpmapi \\
     fastdormancy
 
@@ -163,6 +166,16 @@ LOCAL_CERTIFICATE := platform
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
+LOCAL_MODULE := fastdormancy
+LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_SRC_FILES := proprietary/app/fastdormancy/fastdormancy.apk
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := APPS
+LOCAL_CERTIFICATE := platform
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
 LOCAL_MODULE := shutdownlistener
 LOCAL_MODULE_OWNER := $VENDOR
 LOCAL_SRC_FILES := proprietary/app/shutdownlistener/shutdownlistener.apk
@@ -176,8 +189,6 @@ include \$(CLEAR_VARS)
 LOCAL_MODULE := TimeService
 LOCAL_MODULE_OWNER := $VENDOR
 LOCAL_SRC_FILES := proprietary/app/TimeService/TimeService.apk
-LOCAL_MODULE := shutdownlistenerLOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/framework/qcnvitems.jar
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_MODULE_CLASS := APPS
