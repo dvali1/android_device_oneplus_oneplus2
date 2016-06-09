@@ -97,7 +97,6 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libop2_cam \
     sensors.hal.tof \
     Snap
 
