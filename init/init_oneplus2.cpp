@@ -34,13 +34,15 @@
 #include "log.h"
 #include "util.h"
 
-void init_variant_properties() {
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
+
+void vendor_load_properties(){
     char device[PROP_VALUE_MAX];
     char rf_version[PROP_VALUE_MAX];
     int rc;
 
     rc = property_get("ro.cm.device", device);
-    if (!rc || strncmp(device, "oneplus2", 8))
+    if (!rc || !ISMATCH(device, "oneplus2"))
         return;
 
     property_get("ro.boot.rf_v1", rf_version);
@@ -63,8 +65,4 @@ void init_variant_properties() {
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "9,9");
     }
-}
-
-void vendor_load_properties() {
-    init_variant_properties();
 }
