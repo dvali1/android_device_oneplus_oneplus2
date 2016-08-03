@@ -336,6 +336,7 @@ vendor/lib64/libmm-disp-apis.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
+vendor/lib64/libuiblur.so
 
 # Graphics firmware
 etc/firmware/a420_pfp.fw
@@ -377,6 +378,7 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # Perf
+bin/energy-awareness
 bin/msm_irqbalance
 vendor/bin/perfd
 vendor/lib/libqti-perfd-client.so
