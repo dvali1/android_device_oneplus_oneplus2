@@ -185,6 +185,8 @@ TARGET_USES_INTERACTION_BOOST := false
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
 # SEPolicy
+include vendor/pa/sepolicy/sepolicy.mk
+
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Time services
