@@ -18,6 +18,7 @@
 -->
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <add-resource type="bool" name="config_enableKeyHandler"></add-resource>
     <bool name="config_enableKeyHandler">true</bool>
 
     <!-- Hardware keys present on the device, stored as a bit field.
@@ -31,6 +32,7 @@
             32 - Camera
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
+    <add-resource type="integer" name="config_deviceHardwareKeys"></add-resource>
     <integer name="config_deviceHardwareKeys">19</integer>
 
     <!-- Control the behavior when the user long presses the home button.
@@ -44,33 +46,34 @@
          This needs to match the constants in
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
+    <add-resource type="integer" name="config_longPressOnHardwareHomeBehavior"></add-resource>
     <integer name="config_longPressOnHardwareHomeBehavior">3</integer>
 
     <!-- Keycodes of gestures. If the gesture is not supported set it to 0. -->
+    <add-resource type="integer" name="config_doubleTapKeyCode"></add-resource>
     <integer name="config_doubleTapKeyCode">183</integer>
-
+    <add-resource type="integer" name="config_drawVKeyCode"></add-resource>
     <integer name="config_drawVKeyCode">61</integer>
-
+    <add-resource type="integer" name="config_drawInverseVKeyCode"></add-resource>
     <integer name="config_drawInverseVKeyCode">62</integer>
-
+    <add-resource type="integer" name="config_drawOKeyCode"></add-resource>
     <integer name="config_drawOKeyCode">59</integer>
-
     <!-- <integer name="config_drawMKeyCode">88</integer> -->
 
     <!-- <integer name="config_drawWKeyCode">87</integer> -->
-
+    <add-resource type="integer" name="config_drawArrowLeftKeyCode"></add-resource>
     <integer name="config_drawArrowLeftKeyCode">63</integer>
-
+    <add-resource type="integer" name="config_drawArrowRightKeyCode"></add-resource>
     <integer name="config_drawArrowRightKeyCode">64</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeUpKeyCode"></add-resource>
     <integer name="config_oneFingerSwipeUpKeyCode">68</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeRightKeyCode"></add-resource>
     <integer name="config_oneFingerSwipeRightKeyCode">65</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeDownKeyCode"></add-resource>
     <integer name="config_oneFingerSwipeDownKeyCode">67</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeLeftKeyCode"></add-resource>
     <integer name="config_oneFingerSwipeLeftKeyCode">66</integer>
-
+    <add-resource type="integer" name="config_twoFingerSwipeKeyCode"></add-resource>
     <integer name="config_twoFingerSwipeKeyCode">60</integer>
 
     <!-- Default settings for gestures
@@ -83,42 +86,48 @@
             6 - Previous music
             7 - Open camera
             8 - Open dialer -->
+    <add-resource type="integer" name="config_doubleTapDefault"></add-resource>
     <integer name="config_doubleTapDefault">1</integer>
-
+    <add-resource type="integer" name="config_drawVDefault"></add-resource>
     <integer name="config_drawVDefault">2</integer>
-
+    <add-resource type="integer" name="config_drawInverseVDefault"></add-resource>
     <integer name="config_drawInverseVDefault">0</integer>
-
+    <add-resource type="integer" name="config_drawODefault"></add-resource>
     <integer name="config_drawODefault">7</integer>
-
+    <add-resource type="integer" name="config_drawMDefault"></add-resource>
     <integer name="config_drawMDefault">0</integer>
-
+    <add-resource type="integer" name="config_drawWDefault"></add-resource>
     <integer name="config_drawWDefault">0</integer>
-
+    <add-resource type="integer" name="config_drawArrowLeftDefault"></add-resource>
     <integer name="config_drawArrowLeftDefault">5</integer>
-
+    <add-resource type="integer" name="config_drawArrowRightDefault"></add-resource>
     <integer name="config_drawArrowRightDefault">6</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeUpDefault"></add-resource>
     <integer name="config_oneFingerSwipeUpDefault">0</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeRightDefault"></add-resource>
     <integer name="config_oneFingerSwipeRightDefault">0</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeDownDefault"></add-resource>
     <integer name="config_oneFingerSwipeDownDefault">0</integer>
-
+    <add-resource type="integer" name="config_oneFingerSwipeLeftDefault"></add-resource>
     <integer name="config_oneFingerSwipeLeftDefault">0</integer>
-
+    <add-resource type="integer" name="config_twoFingerSwipeDefault"></add-resource>
     <integer name="config_twoFingerSwipeDefault">4</integer>
 
     <!-- Whether to intercept inputs on screen off. -->
+    <add-resource type="bool" name="config_enableKeyHandler"></add-resource>
     <bool name="config_enableKeyHandler">true</bool>
 
     <!-- Whether device has physical tri state switch -->
+    <add-resource type="bool" name="config_hasAlertSlider"></add-resource>
     <bool name="config_hasAlertSlider">true</bool>
 
     <!-- Default value for proximity check on screen wake
          NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)
     -->
+    <add-resource type="bool" name="config_proximityCheckOnWake"></add-resource>
     <bool name="config_proximityCheckOnWake">true</bool>
+    <add-resource type="integer" name="config_proximityCheckTimeout"></add-resource>
     <integer name="config_proximityCheckTimeout">100</integer>
+    <add-resource type="bool" name="config_proximityCheckOnWakeEnabledByDefault"></add-resource>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 </resources>
