@@ -47,7 +47,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:system/etc/permissions/android.hardware.vr.high_performance.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -94,7 +98,8 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    libop2_cam
+    sensors.hal.tof \
+    SnapdragonCamera
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -129,6 +134,10 @@ PRODUCT_PACKAGES += \
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
     fingerprintd
+
+# For android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -204,7 +213,8 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
+    init.qcom.bt.sh \
+    init.zram.sh
 
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -219,6 +229,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
+
+PRODUCT_PACKAGES += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -238,6 +251,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf-profile4.conf:system/vendor/etc/perf-profile4.conf \
     $(LOCAL_PATH)/configs/perf-profile5.conf:system/vendor/etc/perf-profile5.conf
 
+# VR
+PRODUCT_PACKAGES += \
+    vr.msm8994
+
+#Android EGL implementation
+PRODUCT_PACKAGES += libGLES_android
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
@@ -247,24 +267,22 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
 
 # WiFi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
-    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
-
 PRODUCT_PACKAGES += \
     ipacm \
     ipacm-diag \
     IPACM_cfg.xml \
-    libqsap_sdk \
-    libQWiFiSoftApCfg \
-    libwpa_client \
     hostapd \
-    dhcpcd.conf \
+    libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf \
-    hostapd_default.conf \
-    hostapd.accept \
-    hostapd.deny
+    wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/wifi/hostapd.conf:system/etc/hostapd/hostapd_default.conf \
+    $(LOCAL_PATH)/wifi/hostapd.deny:system/etc/hostapd/hostapd.deny \
+    $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini

@@ -21,7 +21,7 @@
 #
 
 # Inherit from qcom-common
-include device/qcom/common/BoardConfigCommon.mk
+#include device/qcom/common/BoardConfigCommon.mk
 
 TARGET_OTA_ASSERT_DEVICE := OnePlus2,oneplus2
 
@@ -59,7 +59,7 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -102,6 +102,9 @@ QCOM_BT_USE_SMD_TTY := true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Clang
+USE_CLANG_PLATFORM_BUILD := true
+
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(PLATFORM_PATH)/charger/images
@@ -110,12 +113,12 @@ BOARD_HEALTHD_CUSTOM_CHARGER_RES := $(PLATFORM_PATH)/charger/images
 TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
 
+# EGL
+BOARD_EGL_CFG := $(PLATFORM_PATH)/egl.cfg
+
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
-
-# Crypto
-TARGET_HW_DISK_ENCRYPTION := true
 
 # Graphics
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -133,14 +136,13 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
 # Init
-TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_INIT_VENDOR_LIB := libinit_oneplus2
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_LIBINIT_DEFINES_FILE := $(PLATFORM_PATH)/init/init_oneplus2.cpp
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
-TARGET_PREFERS_AOSP_ROTATION_SENSOR := true
+BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -172,6 +174,9 @@ TARGET_USES_INTERACTION_BOOST := false
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
+
+# SEPolicy
+include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
