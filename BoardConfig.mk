@@ -58,7 +58,6 @@ TARGET_CPU_CORTEX_A53 := true
 
 USE_CLANG_PLATFORM_BUILD := true
 
-
 # Kernel
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
@@ -109,7 +108,7 @@ QCOM_BT_USE_SMD_TTY := true
 # Camera
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
-TARGET_CAMERA_APP := Camera2
+TARGET_CAMERA_APP := Snap
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
@@ -131,6 +130,7 @@ TARGET_USES_ION := true
 TARGET_USES_NEW_ION_API :=true
 TARGET_USES_C2D_COMPOSITION := true
 USE_OPENGL_RENDERER := true
+TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
@@ -138,12 +138,16 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 HAVE_ADRENO_SOURCE:= false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
+#Enable HW based full disk encryption
+TARGET_HW_DISK_ENCRYPTION := false
+
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_oneplus2
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+TARGET_LIBINIT_DEFINES_FILE := $(PLATFORM_PATH)/init/init_oneplus2.cpp
 
 # Keystore
 TARGET_PROVIDES_KEYMASTER := true
@@ -160,7 +164,9 @@ TARGET_NO_RPC := true
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 BOARD_GLOBAL_CFLAGS += -DCOMPAT_SENSORS_M
+BOARD_HAL_STATIC_LIBRARIES := libhealthd.msm
 
+TARGET_USES_IMS := true
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
   ifeq ($(call match-word-in-list,$(TARGET_BUILD_VARIANT),user),true)
